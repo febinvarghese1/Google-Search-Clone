@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import NavBar from "./components/Header/NavBar";
+import Footer from "./components/Footer/Footer";
+import Routing from "./components/Main/Routing";
+import "./App.css";
 
 function App() {
+  const [darkToggle, setDarkToogle] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkToggle ? "dark" : ""}>
+      <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen ease-in duration-600">
+        <NavBar darkToggle={darkToggle} setDarkToggle={setDarkToogle} />
+        <Routing />
+        <Footer />
+      </div>
     </div>
   );
 }
